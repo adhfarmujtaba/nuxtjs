@@ -20,7 +20,7 @@ export default {
   css: [
     '@/assets/css/main.css' // Path to your custom CSS file
   ],
-  
+
   // Plugins to run before rendering page
   plugins: [
     // Add your plugins here, if any
@@ -38,7 +38,7 @@ export default {
   // Modules
   modules: [
     '@nuxtjs/axios', // Axios module for making HTTP requests
-    '@nuxtjs/pwa', // PWA module for a better mobile experience
+    '@nuxtjs/pwa', // PWA module for a better mobile experience (remove if not needed)
   ],
 
   // Axios module configuration
@@ -64,8 +64,7 @@ export default {
 
   // Build Configuration
   build: {
-    buildDir: 'dist/.nuxt', // Specify a directory for built files
-    // Add any additional build configurations here
+    // Default build directory is fine; no need to change
   },
 
   // Target Configuration

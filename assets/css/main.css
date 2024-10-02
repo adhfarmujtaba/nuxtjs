@@ -498,3 +498,7 @@
       transform: rotate(360deg);
     }
   }
+
+  .card-link{
+    text-decoration: none;
+  }
