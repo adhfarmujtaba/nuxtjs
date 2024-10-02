@@ -18,11 +18,9 @@ export default {
 
   // Global CSS
   css: [
-    'bootstrap/dist/css/bootstrap.css', // Include Bootstrap CSS
     '@/assets/css/main.css' // Path to your custom CSS file
   ],
   
-
   // Plugins to run before rendering page
   plugins: [
     // Add your plugins here, if any
@@ -39,7 +37,6 @@ export default {
   // Modules
   modules: [
     '@nuxtjs/axios', // Axios module for making HTTP requests
-    'bootstrap-vue/nuxt', // Bootstrap Vue module for styling
   ],
 
   // Axios module configuration
@@ -57,6 +54,7 @@ export default {
       });
     }
   },
+
   layoutTransition: {
     name: 'fade',
     mode: 'out-in'
@@ -64,6 +62,10 @@ export default {
 
   // Build Configuration
   build: {
-    buildDir: 'dist', 
-  }
+    // Use default build directory
+    buildDir: '.nuxt',
+  },
+
+  // Target Configuration
+  target: 'static', // Change to 'server' if using server-side rendering
 }
