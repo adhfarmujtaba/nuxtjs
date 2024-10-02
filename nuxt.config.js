@@ -64,6 +64,6 @@ export default {
 
   // Build Configuration
   build: {
-    // Additional build configuration if needed
+    buildDir: 'dist', 
   }
 }
