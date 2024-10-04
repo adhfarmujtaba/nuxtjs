@@ -68,7 +68,7 @@ export default {
   },
 
   // Target Configuration
-  target: 'static', // Use 'server' if you prefer server-side rendering
+  target: 'server', // Use 'server' if you prefer server-side rendering
 
   // Generate configuration for static sites
   generate: {

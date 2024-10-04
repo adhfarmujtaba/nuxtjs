@@ -13,41 +13,29 @@
 
 <script>
 export default {
-  data() {
-    return {
-      post: {},
-      loading: true,
-      error: null,
-    };
-  },
-  async mounted() {
-    await this.fetchPost();
-  },
-  methods: {
-    async fetchPost() {
-      this.loading = true;
-      this.error = null; // Reset error before fetching
-      const postSlug = this.$route.params.slug; // Get slug from route parameters
+  async asyncData({ params, $axios }) {
+    const postSlug = params.slug; // Get slug from route parameters
+    let post = {};
+    let loading = true;
+    let error = null;
 
-      try {
-        const response = await this.$axios.$get(`https://blog.tourismofkashmir.com/apis?post_slug=${postSlug}`);
-        console.log('Post Response:', response); // Log the entire response
-
-        // Assign the post directly from the response object
-        if (response) {
-          this.post = response; // Use the post directly
-        } else {
-          this.error = 'Post not found.';
-        }
-      } catch (err) {
-        this.error = 'Failed to load post.';
-        console.error('Error fetching post:', err); // Debug error
-      } finally {
-        this.loading = false;
-        console.log('Loading complete.'); // Debug line
+    try {
+      const response = await $axios.$get(`https://blog.tourismofkashmir.com/apis?post_slug=${postSlug}`);
+      if (response) {
+        post = response; // Assign the post directly from the response object
+      } else {
+        error = 'Post not found.';
       }
-    },
+    } catch (err) {
+      error = 'Failed to load post.';
+      console.error('Error fetching post:', err); // Debug error
+    } finally {
+      loading = false; // Set loading to false after fetch
+    }
+
+    return { post, loading, error }; // Return the data
   },
+
   head() {
     return {
       title: this.post.title || 'Default Title',
@@ -62,6 +50,14 @@ export default {
   },
 };
 </script>
+
+<style>
+.post-image {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+
 
 <style>
 .post-image {
